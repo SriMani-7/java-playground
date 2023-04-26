@@ -2,6 +2,9 @@ package guess;
 
 import java.util.Random;
 
+/**
+ * The GuessGameLogic class contains the game logic for the Guess the Number game.
+ */
 public class GuessGameLogic {
     private final Random random;
     private int score;

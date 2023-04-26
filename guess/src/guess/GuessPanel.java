@@ -9,6 +9,12 @@ import static java.lang.Integer.parseInt;
 import static javax.swing.BorderFactory.createEmptyBorder;
 import static guess.SwingUtils.dimen;
 
+/**
+ * The GuessPanel class represents a Swing JPanel that implements a simple guessing game UI.
+ * It displays a title, an instruction label, an input text field for entering guesses, a submit button,
+ * and a reset button. It also displays the number of attempts made by the user and provides feedback
+ * on the correctness of the guesses. The class uses a GuessGameLogic object to handle the game logic.
+ */
 class GuessPanel extends JPanel {
     private final JTextField inputTextField;
     private final JLabel attemptsLabel, instructionLabel;
@@ -16,6 +22,9 @@ class GuessPanel extends JPanel {
 
     private final GuessGameLogic gameLogic;
 
+    /**
+     * Constructs a new `GuessPanel` object.
+     */
     public GuessPanel() {
         gameLogic = new GuessGameLogic();
         attemptsLabel = new JLabel();
@@ -28,15 +37,19 @@ class GuessPanel extends JPanel {
         var box = new BoxLayout(this, BoxLayout.Y_AXIS);
         setLayout(box);
         setBorder(createEmptyBorder(10, 15, 20, 15));
-        initUi();
-        resetGame();
+        initUi(); // Initialize the UI components
+        resetGame(); // Reset the game state
     }
 
+    /**
+     * Initializes the UI components of the panel.
+     */
     private void initUi() {
 
         JLabel titleLabel = new JLabel("Guess the Number\n 1 to 100");
         titleLabel.setFont(new Font("Verdana", Font.BOLD, 20));
 
+        // Create and configure a horizontal box for the reset and submit buttons
         Box horizontalBox = Box.createHorizontalBox();
         horizontalBox.add(resetButton);
         horizontalBox.add(Box.createHorizontalStrut(20));
@@ -61,15 +74,18 @@ class GuessPanel extends JPanel {
         add(horizontalBox);
         add(Box.createVerticalGlue()); // weight = 1
 
-        // Event listeners
+        // Add event listeners for input text field and buttons
         inputTextField.addKeyListener(new DigitKeyAdapter());
         inputTextField.addActionListener(this::performGuess);
         submitButton.addActionListener(this::performGuess);
         resetButton.addActionListener(e -> resetGame());
 
-        theming(); // apply colors, font, alignment
+        theming(); // Apply theming (colors, fonts, alignment) to UI components
     }
 
+    /**
+     * This method applies custom theming to the GUI components in the GuessPanel.
+     */
     private void theming() {
         instructionLabel.setFont(new Font("Comic sans MS", Font.BOLD, 18));
         attemptsLabel.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
@@ -91,6 +107,11 @@ class GuessPanel extends JPanel {
         inputTextField.setFont(new Font(Font.MONOSPACED, Font.BOLD, 20));
     }
 
+    /**
+     * Resets the game by calling the reset method of the gameLogic object.
+     * setting the ui components state.
+     * making the input text field visible.
+     */
     private void resetGame() {
 
         gameLogic.reset();
@@ -105,6 +126,9 @@ class GuessPanel extends JPanel {
         instructionLabel.setForeground(Color.GRAY);
     }
 
+    /**
+     * This method is called when the game is over, i.e. the player has run out of attempts or on game completed.
+     */
     private void gameOver() {
         attemptsLabel.setText("");
         inputTextField.setVisible(false);
@@ -112,6 +136,11 @@ class GuessPanel extends JPanel {
         resetButton.setText("PLay again");
     }
 
+    /**
+     * This method is called when the user clicks the submit button to perform a guess.
+     *
+     * @param e ActionEvent
+     */
     private void performGuess(ActionEvent e) {
         try {
             var number = parseInt(inputTextField.getText()); // throws exception for number formatting
@@ -123,7 +152,7 @@ class GuessPanel extends JPanel {
             } else {
                 gameLogic.reduceScore();
                 if (gameLogic.isGameOver()) {
-                    instructionLabel.setText("Correct guess is "+gameLogic.getRandomNumber());
+                    instructionLabel.setText("Correct guess is " + gameLogic.getRandomNumber());
                     gameOver();
                 } else {
                     attemptsLabel.setText(attemptsString());
@@ -138,6 +167,11 @@ class GuessPanel extends JPanel {
         }
     }
 
+    /**
+     * This is a method that returns a string representation of the number of attempts remains for the player in the game.
+     *
+     * @return remaining attempts string for the label.
+     */
     private String attemptsString() {
         return String.format("Attempts : %02d", gameLogic.getAttempts());
     }
