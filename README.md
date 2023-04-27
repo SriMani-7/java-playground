@@ -13,7 +13,7 @@ different aspects of Java development at their own pace.
 The game randomly generates a target number, and the player needs to guess the correct number within a certain number of
 attempts.
 
-[screen-record.mp4](guess%2Farts%2Fscreen-record.mp4)
+<video src="guess%2Farts%2Fscreen-record.mp4" height="250px"></video>
 
 ## Getting Started
 
