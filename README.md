@@ -6,14 +6,18 @@ languages, and more.
 
 The repository is organized into multiple modules, each containing well-documented projects for exploration and
 practice. These modules are designed to provide a comprehensive learning experience, allowing users to delve into
-different aspects of Java development at their own pace. 
+different aspects of Java development at their own pace.
 
 ### 1. Guess the number 🤔
 
 The game randomly generates a target number, and the player needs to guess the correct number within a certain number of
 attempts.
 
-<video src="guess%2Farts%2Fscreen-record.mp4" height="250px"></video>
+### 2. Tic Tac Toe ⭕✖️⭕
+
+Tic Tac Toe is a classic game that can be implemented using Java Swing. In this game, two players take turns placing
+their respective marks (either X or O) on a 3x3 grid. The objective of the game is to get three of your marks in a row,
+either horizontally, vertically, or diagonally.
 
 ## Getting Started
 

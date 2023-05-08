@@ -24,7 +24,7 @@ public class GamePanel extends JPanel {
         // restart button
         CustomButton restartButton = new CustomButton("▶️  Restart", true);
         restartButton.setFont(Font.BOLD, 16);
-        restartButton.setColors(MESSAGE_COLOR, BUTTON_COLOR);
+        restartButton.setColors(MESSAGE_COLOR, Color.BLACK);
         restartButton.padding(20, 15);
         restartButton.addActionListener(event -> resetGame());
 
@@ -37,7 +37,7 @@ public class GamePanel extends JPanel {
                 int X = x, Y = y;
                 CustomButton button = new CustomButton(" ", false);
                 button.setSize(BUTTON_SIZE);
-                button.setFont("cursive", Font.BOLD, 34);
+                button.setFont("fantasy", Font.BOLD, 34);
                 button.setColors(BACKGROUND, SYMBOL_COLOR);
                 button.addActionListener(event -> onButtonClick(X, Y));
                 buttons[x][y] = button;
@@ -62,11 +62,11 @@ public class GamePanel extends JPanel {
         JLabel titleLabel = new JLabel("Tic Tac Toe");
         titleLabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 24));
         titleLabel.setForeground(TEXT_COLOR);
-        CustomButton button = new CustomButton("Exit 🗡️", true);
+        CustomButton button = new CustomButton("Exit ️", true);
         button.setFont(Font.BOLD, 14);
-        button.setColors(new Color(0x366ACD), TEXT_COLOR);
+        button.setColors(BORDER, TEXT_COLOR);
         button.padding(10, 8);
-        button.addActionListener(event -> System.exit(1));
+        button.addActionListener(event -> System.exit(0));
         button.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
         Box horizontalBox = Box.createHorizontalBox();
