@@ -35,10 +35,6 @@ public class BoardLogic {
         return isXTurn ? "X" : "O";
     }
 
-    public String opponent() {
-        return isXTurn ? "O" : "X";
-    }
-
     public boolean checkWinner() {
         for (int i = 0; i < 3; i++) {
             if (board[i][0] != 0 && board[i][0] == board[i][1] && board[i][1] == board[i][2]) {
@@ -48,7 +44,6 @@ public class BoardLogic {
                 return true;
             }
         }
-        // Check diagonals for a win
         if (board[0][0] != 0 && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
             return true;
         }
