@@ -7,9 +7,13 @@ either horizontally, vertically, or diagonally.
 ### Screenshots
 
 <div style="display: flex; justify-content: center; gap: 8px; padding-top: 10px">
-    <img src="arts/img.png" width="50%"/>
-    <img src="arts/img_1.png" width="50%"/>
+    <img src="arts/img.png" width="50%" alt="winner"/>
+    <img src="arts/img_1.png" width="50%" alt="initial state"/>
 </div>
+
+### UI design
+
+<img src="arts/component_tree.png" width="50%" alt="ui design"/>
 
 ### Features
 
