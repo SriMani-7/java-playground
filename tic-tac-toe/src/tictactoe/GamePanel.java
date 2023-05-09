@@ -1,10 +1,26 @@
 package tictactoe;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
 
 import static tictactoe.TicTacToeWindow.*;
 
+
+/**
+ * This class represents the game panel of a Tic Tac Toe game.
+ * It is responsible for rendering the game interface, handling user inputs, and updating the game state.
+ *
+ * @author [SriMani-7]
+ */
 public class GamePanel extends JPanel {
 
     private final BoardLogic boardLogic = new BoardLogic();
@@ -12,22 +28,25 @@ public class GamePanel extends JPanel {
     private final JLabel messageLabel;
 
     public GamePanel() {
+
+        // Set layout and background
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(BACKGROUND);
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        // message label
+        // Initialize message label
         messageLabel = new JLabel(boardLogic.currentPlayer());
         messageLabel.setFont(new Font("verdana", Font.BOLD, 20));
         messageLabel.setForeground(MESSAGE_COLOR);
 
-        // restart button
+        // Initialize restart button
         CustomButton restartButton = new CustomButton("▶️  Restart", true);
         restartButton.setFont(Font.BOLD, 16);
         restartButton.setColors(MESSAGE_COLOR, Color.BLACK);
         restartButton.padding(20, 15);
         restartButton.addActionListener(event -> resetGame());
 
+        // Initialize grid panel
         JPanel gridPanel = new JPanel();
         gridPanel.setMaximumSize(grisSize());
         gridPanel.setLayout(new GridLayout(3, 3, BUTTON_GAP, BUTTON_GAP));
@@ -45,10 +64,12 @@ public class GamePanel extends JPanel {
             }
         }
 
+        // Set alignment of components
         restartButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         messageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         gridPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        // Add components to panel
         add(getCustomToolbar());
         add(Box.createVerticalStrut(25));
         add(messageLabel);
@@ -58,6 +79,11 @@ public class GamePanel extends JPanel {
         add(restartButton);
     }
 
+    /**
+     * Creates and returns a custom toolbar for the game panel.
+     *
+     * @return The custom toolbar as a Component object.
+     */
     private Component getCustomToolbar() {
         JLabel titleLabel = new JLabel("Tic Tac Toe");
         titleLabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 24));
@@ -76,6 +102,9 @@ public class GamePanel extends JPanel {
         return horizontalBox;
     }
 
+    /**
+     * Resets the game to its initial state.
+     */
     private void resetGame() {
         boardLogic.reset();
         for (JButton[] row : buttons) {
@@ -86,6 +115,13 @@ public class GamePanel extends JPanel {
         messageLabel.setText(boardLogic.currentPlayer());
     }
 
+    /**
+     * This method handles the click event of a button on the game board.
+     * It calls the makeMove method of the BoardLogic class and updates the message label and the button text accordingly.
+     *
+     * @param x The row index of the clicked button.
+     * @param y The column index of the clicked button.
+     */
     public void onButtonClick(int x, int y) {
         String previous = boardLogic.currentPlayer();
         String message = switch (boardLogic.makeMove(x, y)) {
@@ -100,6 +136,11 @@ public class GamePanel extends JPanel {
         }
     }
 
+    /**
+     * This method calculates and returns the size of the game board based on the button size and gap size.
+     *
+     * @return The size of the game board as a Dimension object.
+     */
     private Dimension grisSize() {
         int size = BUTTON_SIZE * 3 + BUTTON_GAP * 3;
         return new Dimension(size, size);
