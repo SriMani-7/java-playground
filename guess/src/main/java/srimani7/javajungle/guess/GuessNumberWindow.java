@@ -1,10 +1,10 @@
-package guess;
+package srimani7.javajungle.guess;
 
 import javax.swing.*;
 
 /**
  * A GUI window for the "Guess the Number" game.
- *
+ * <p>
  * Allows the user to input guesses and displays the number of attempts and game status.
  */
 public class GuessNumberWindow extends JFrame {

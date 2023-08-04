@@ -1,4 +1,4 @@
-package tictactoe;
+package srimani7.javajungle;
 
 import javax.swing.JFrame;
 
