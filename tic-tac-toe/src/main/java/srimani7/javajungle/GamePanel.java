@@ -1,4 +1,4 @@
-package tictactoe;
+package srimani7.javajungle;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -12,8 +12,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 
-import static tictactoe.TicTacToeWindow.*;
-
+import static srimani7.javajungle.TicTacToeWindow.*;
 
 /**
  * This class represents the game panel of a Tic Tac Toe game.

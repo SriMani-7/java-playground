@@ -1,4 +1,4 @@
-package guess;
+package srimani7.javajungle.guess;
 
 
 import javax.swing.*;
@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 
 import static java.lang.Integer.parseInt;
 import static javax.swing.BorderFactory.createEmptyBorder;
-import static guess.SwingUtils.dimen;
+import static srimani7.javajungle.guess.SwingUtils.dimen;
 
 /**
  * The GuessPanel class represents a Swing JPanel that implements a simple guessing game UI.
