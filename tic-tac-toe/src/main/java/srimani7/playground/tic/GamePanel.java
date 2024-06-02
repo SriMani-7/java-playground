@@ -1,4 +1,4 @@
-package srimani7.javajungle;
+package srimani7.playground.tic;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -11,8 +11,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-
-import static srimani7.javajungle.TicTacToeWindow.*;
 
 /**
  * This class represents the game panel of a Tic Tac Toe game.
@@ -30,33 +28,33 @@ public class GamePanel extends JPanel {
 
         // Set layout and background
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setBackground(BACKGROUND);
+        setBackground(TicTacToeWindow.BACKGROUND);
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         // Initialize message label
         messageLabel = new JLabel(boardLogic.currentPlayer());
         messageLabel.setFont(new Font("verdana", Font.BOLD, 20));
-        messageLabel.setForeground(MESSAGE_COLOR);
+        messageLabel.setForeground(TicTacToeWindow.MESSAGE_COLOR);
 
         // Initialize restart button
         CustomButton restartButton = new CustomButton("▶️  Restart", true);
         restartButton.setFont(Font.BOLD, 16);
-        restartButton.setColors(MESSAGE_COLOR, Color.BLACK);
+        restartButton.setColors(TicTacToeWindow.MESSAGE_COLOR, Color.BLACK);
         restartButton.padding(20, 15);
         restartButton.addActionListener(event -> resetGame());
 
         // Initialize grid panel
         JPanel gridPanel = new JPanel();
         gridPanel.setMaximumSize(grisSize());
-        gridPanel.setLayout(new GridLayout(3, 3, BUTTON_GAP, BUTTON_GAP));
-        gridPanel.setBackground(BORDER);
+        gridPanel.setLayout(new GridLayout(3, 3, TicTacToeWindow.BUTTON_GAP, TicTacToeWindow.BUTTON_GAP));
+        gridPanel.setBackground(TicTacToeWindow.BORDER);
         for (int x = 0; x < 3; x++) {
             for (int y = 0; y < 3; y++) {
                 int X = x, Y = y;
                 CustomButton button = new CustomButton(" ", false);
-                button.setSize(BUTTON_SIZE);
+                button.setSize(TicTacToeWindow.BUTTON_SIZE);
                 button.setFont("fantasy", Font.BOLD, 34);
-                button.setColors(BACKGROUND, SYMBOL_COLOR);
+                button.setColors(TicTacToeWindow.BACKGROUND, TicTacToeWindow.SYMBOL_COLOR);
                 button.addActionListener(event -> onButtonClick(X, Y));
                 buttons[x][y] = button;
                 gridPanel.add(button);
@@ -86,10 +84,10 @@ public class GamePanel extends JPanel {
     private Component getCustomToolbar() {
         JLabel titleLabel = new JLabel("Tic Tac Toe");
         titleLabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 24));
-        titleLabel.setForeground(TEXT_COLOR);
+        titleLabel.setForeground(TicTacToeWindow.TEXT_COLOR);
         CustomButton button = new CustomButton("Exit ️", true);
         button.setFont(Font.BOLD, 14);
-        button.setColors(BORDER, TEXT_COLOR);
+        button.setColors(TicTacToeWindow.BORDER, TicTacToeWindow.TEXT_COLOR);
         button.padding(10, 8);
         button.addActionListener(event -> System.exit(0));
         button.setAlignmentX(Component.RIGHT_ALIGNMENT);
@@ -141,7 +139,7 @@ public class GamePanel extends JPanel {
      * @return The size of the game board as a Dimension object.
      */
     private Dimension grisSize() {
-        int size = BUTTON_SIZE * 3 + BUTTON_GAP * 3;
+        int size = TicTacToeWindow.BUTTON_SIZE * 3 + TicTacToeWindow.BUTTON_GAP * 3;
         return new Dimension(size, size);
     }
 }

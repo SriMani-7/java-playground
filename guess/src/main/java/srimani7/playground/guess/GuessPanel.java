@@ -1,4 +1,4 @@
-package srimani7.javajungle.guess;
+package srimani7.playground.guess;
 
 
 import javax.swing.*;
@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 
 import static java.lang.Integer.parseInt;
 import static javax.swing.BorderFactory.createEmptyBorder;
-import static srimani7.javajungle.guess.SwingUtils.dimen;
 
 /**
  * The GuessPanel class represents a Swing JPanel that implements a simple guessing game UI.
@@ -101,8 +100,8 @@ class GuessPanel extends JPanel {
         resetButton.setBorderPainted(false);
         resetButton.setOpaque(true);
 
-        inputTextField.setPreferredSize(dimen(200, 80));
-        inputTextField.setMaximumSize(dimen(200, 80));
+        inputTextField.setPreferredSize(SwingUtils.dimen(200, 80));
+        inputTextField.setMaximumSize(SwingUtils.dimen(200, 80));
         inputTextField.setBorder(createEmptyBorder(20, 20, 20, 20));
         inputTextField.setFont(new Font(Font.MONOSPACED, Font.BOLD, 20));
     }

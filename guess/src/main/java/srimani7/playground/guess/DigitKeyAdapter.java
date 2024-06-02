@@ -1,4 +1,4 @@
-package srimani7.javajungle.guess;
+package srimani7.playground.guess;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

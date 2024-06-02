@@ -1,4 +1,4 @@
-package srimani7.javajungle.chitchat;
+package srimani7.playground.chitchat;
 
 import java.io.IOException;
 import java.net.Socket;

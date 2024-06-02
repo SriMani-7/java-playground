@@ -1,4 +1,4 @@
-package srimani7.javajungle;
+package srimani7.playground.tic;
 
 import java.util.Arrays;
 
