@@ -1,37 +1,27 @@
-## Java Jungle
+# Java Playground
 
-Java Jungle is a repository that contains a collection of simple Java projects aimed at helping individuals learn
-Java and its related frameworks. The repository covers various topics such as Swing, JavaFX, Spring framework, JVM
-languages, and more.
+Java Playground is a collection of simple Java projects designed to help you learn Java and its frameworks. The
+repository covers various topics such as Swing, JavaFX, Spring framework, JVM languages, and more.
 
-The repository is organized into multiple modules, each containing well-documented projects for exploration and
-practice. These modules are designed to provide a comprehensive learning experience, allowing users to delve into
-different aspects of Java development at their own pace.
+## Projects
 
-### [1. Guess the number](guess) 🤔
+The repository is organized into multiple modules, each with well-documented projects for exploration and practice.
+These modules offer a comprehensive learning experience, allowing you to explore different aspects of Java development
+at your own pace.
 
-The game randomly generates a target number, and the player needs to guess the correct number within a certain number of
-attempts.
-
-### [2. Tic Tac Toe](tic-tac-toe) ⭕✖️⭕
-
-Tic Tac Toe is a classic game that can be implemented using Java Swing. In this game, two players take turns placing
-their respective marks (either X or O) on a 3x3 grid. The objective of the game is to get three of your marks in a row,
-either horizontally, vertically, or diagonally.
-
-### [3. ChitChat](chitchat) 💬
-
-This project aimed to develop a chatting application from very basic, by exploring the fundamentals of programming and APIs those are listed below,
-* Java Socket programming
-* Java I/O Streams
+|   |                                                                                                                                                                                                                             |                                                     |
+|---|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------|
+| 1 | [Guess the Number](guess) 🤔<br/> A game where you need to guess a randomly generated target number within a certain number of attempts.                                                                                    | ![Output screenshot](guess/arts/img.png)            |
+| 2 | [Tic Tac Toe](tic-tac-toe) ⭕✖️⭕ <br/> A classic game implemented using Java Swing. Two players take turns placing their marks (X or O) on a 3x3 grid, aiming to get three in a row horizontally, vertically, or diagonally. | ![Output screenshot](tic-tac-toe/arts/img.png)      |
+| 3 | [ChitChat](chitchat) 💬 <br/> A basic chat application exploring the fundamentals of Java Socket programming and Java I/O Streams.                                                                                          | ![project banner](chitchat/arts/project-banner.png) |
 
 ## Getting Started
 
-* Clone the repository to your local machine or download the source code as a ZIP file.
-* Open the project in your favorite Java development environment (e.g., Eclipse, IntelliJ IDEA, etc.).
-* Follow the instructions in module's README.md
-* Make sure you are using JDK 18 and above versions
+1. Clone the repository or download the source code as a ZIP file.
+2. Open the project in your favorite Java development environment (e.g., Eclipse, IntelliJ IDEA).
+3. Follow the instructions in each module's README.md.
+4. Ensure you are using JDK 18 or above.
 
-Happy coding !!
+Happy coding!
 
-Don't forget to Star. Follow for updates on this repo.
+> Don't forget to star the repository and follow for updates.
