@@ -11,9 +11,9 @@ at your own pace.
 
 |   |                                                                                                                                                                                                                             |                                                     |
 |---|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------|
-| 1 | [Guess the Number](guess) 🤔<br/> A game where you need to guess a randomly generated target number within a certain number of attempts.                                                                                    | ![Output screenshot](guess/arts/img.png)            |
-| 2 | [Tic Tac Toe](tic-tac-toe) ⭕✖️⭕ <br/> A classic game implemented using Java Swing. Two players take turns placing their marks (X or O) on a 3x3 grid, aiming to get three in a row horizontally, vertically, or diagonally. | ![Output screenshot](tic-tac-toe/arts/img.png)      |
-| 3 | [ChitChat](chitchat) 💬 <br/> A basic chat application exploring the fundamentals of Java Socket programming and Java I/O Streams.                                                                                          | ![project banner](chitchat/arts/project-banner.png) |
+| 1 | [Guess the Number](guess) 🤔<br/><br/> A game where you need to guess a randomly generated target number within a certain number of attempts.                                                                                    | ![Output screenshot](guess/arts/img.png)            |
+| 2 | [Tic Tac Toe](tic-tac-toe) ⭕✖️⭕ <br/><br/> A classic game implemented using Java Swing. Two players take turns placing their marks (X or O) on a 3x3 grid, aiming to get three in a row horizontally, vertically, or diagonally. | ![Output screenshot](tic-tac-toe/arts/img.png)      |
+| 3 | [ChitChat](chitchat) 💬 <br/><br/> A basic chat application exploring the fundamentals of Java Socket programming and Java I/O Streams.                                                                                          | ![project banner](chitchat/arts/project-banner.png) |
 
 ## Getting Started
 
