@@ -23,10 +23,9 @@ either horizontally, vertically, or diagonally.
 
 ### Technologies Used
 
-* JDK 18
+* JDK 1.8
 * Swing (Java GUI library)
 * **lambda** expressions
-* **Switch expressions**
 
 ### Instructions
 

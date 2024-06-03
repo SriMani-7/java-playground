@@ -20,7 +20,7 @@ at your own pace.
 1. Clone the repository or download the source code as a ZIP file.
 2. Open the project in your favorite Java development environment (e.g., Eclipse, IntelliJ IDEA).
 3. Follow the instructions in each module's README.md.
-4. Ensure you are using JDK 18 or above.
+4. Ensure you are using JDK 1.8 or above.
 
 Happy coding!
 

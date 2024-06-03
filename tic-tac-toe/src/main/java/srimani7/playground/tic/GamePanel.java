@@ -85,7 +85,7 @@ public class GamePanel extends JPanel {
         JLabel titleLabel = new JLabel("Tic Tac Toe");
         titleLabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 24));
         titleLabel.setForeground(TicTacToeWindow.TEXT_COLOR);
-        CustomButton button = new CustomButton("Exit ️", true);
+        CustomButton button = new CustomButton("Exit", true);
         button.setFont(Font.BOLD, 14);
         button.setColors(TicTacToeWindow.BORDER, TicTacToeWindow.TEXT_COLOR);
         button.padding(10, 8);
@@ -121,11 +121,12 @@ public class GamePanel extends JPanel {
      */
     public void onButtonClick(int x, int y) {
         String previous = boardLogic.currentPlayer();
-        String message = switch (boardLogic.makeMove(x, y)) {
-            case MOVE -> boardLogic.currentPlayer();
-            case WINNER -> String.format("<-- %s wins -->", previous);
-            case TIE -> "<-- Game over -->";
-            case INVALID -> null;
+        String message;
+        switch (boardLogic.makeMove(x, y)) {
+            case MOVE: message = boardLogic.currentPlayer(); break;
+            case WINNER: message = String.format("<-- %s wins -->", previous); break;
+            case TIE: message = "<-- Game over -->"; break;
+            default: message = null;
         };
         if (message != null) {
             messageLabel.setText(message);

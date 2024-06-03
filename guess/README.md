@@ -21,9 +21,8 @@ attempts.
 
 ### Technologies Used
 
-* JDK 18
+* JDK 1.8
 * Swing (Java GUI library)
-* **var** keyword
 * **lambda** expressions
 * **method references**
 

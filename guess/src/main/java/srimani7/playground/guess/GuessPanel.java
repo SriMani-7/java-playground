@@ -33,7 +33,7 @@ class GuessPanel extends JPanel {
         submitButton = new JButton("Submit");
         resetButton = new JButton("Reset");
 
-        var box = new BoxLayout(this, BoxLayout.Y_AXIS);
+        BoxLayout box = new BoxLayout(this, BoxLayout.Y_AXIS);
         setLayout(box);
         setBorder(createEmptyBorder(10, 15, 20, 15));
         initUi(); // Initialize the UI components
@@ -142,9 +142,9 @@ class GuessPanel extends JPanel {
      */
     private void performGuess(ActionEvent e) {
         try {
-            var number = parseInt(inputTextField.getText()); // throws exception for number formatting
+            int number = parseInt(inputTextField.getText()); // throws exception for number formatting
             if (gameLogic.isCorrect(number)) {
-                var inst = String.format("You won the game : %02d / 100", gameLogic.getScore());
+                String inst = String.format("You won the game : %02d / 100", gameLogic.getScore());
                 instructionLabel.setText(inst);
                 instructionLabel.setForeground(Color.BLUE);
                 gameOver();

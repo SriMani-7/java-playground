@@ -20,7 +20,7 @@ public class GuessGameLogic {
     }
 
     public void reset() {
-        randomNumber = random.nextInt(1, 100);
+        randomNumber = random.nextInt(100)+1;
         score = 100;
         System.out.println("Generated random number " + randomNumber);
     }
