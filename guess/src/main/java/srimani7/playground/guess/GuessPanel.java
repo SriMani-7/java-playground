@@ -11,7 +11,7 @@ import static javax.swing.BorderFactory.createEmptyBorder;
 /**
  * The GuessPanel class represents a Swing JPanel that implements a simple guessing game UI.
  * It displays a title, an instruction label, an input text field for entering guesses, a submit button,
- * and a reset button. It also displays the number of attempts made by the user and provides feedback
+ * and a reset button. It also displays remaining attempts and provides feedback
  * on the correctness of the guesses. The class uses a GuessGameLogic object to handle the game logic.
  */
 class GuessPanel extends JPanel {
@@ -29,7 +29,6 @@ class GuessPanel extends JPanel {
         attemptsLabel = new JLabel();
         instructionLabel = new JLabel("Enter your guess");
         inputTextField = new JTextField();
-        attemptsLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         submitButton = new JButton("Submit");
         resetButton = new JButton("Reset");
 
@@ -59,6 +58,7 @@ class GuessPanel extends JPanel {
         submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         instructionLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         inputTextField.setAlignmentX(Component.CENTER_ALIGNMENT);
+        attemptsLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // Add components to panel in order
         add(Box.createVerticalStrut(30));
@@ -74,7 +74,6 @@ class GuessPanel extends JPanel {
         add(Box.createVerticalGlue()); // weight = 1
 
         // Add event listeners for input text field and buttons
-        inputTextField.addKeyListener(new DigitKeyAdapter());
         inputTextField.addActionListener(this::performGuess);
         submitButton.addActionListener(this::performGuess);
         resetButton.addActionListener(e -> resetGame());
@@ -100,8 +99,8 @@ class GuessPanel extends JPanel {
         resetButton.setBorderPainted(false);
         resetButton.setOpaque(true);
 
-        inputTextField.setPreferredSize(SwingUtils.dimen(200, 80));
-        inputTextField.setMaximumSize(SwingUtils.dimen(200, 80));
+        Dimension textFieldSize = new Dimension(200, 80);
+        inputTextField.setMaximumSize(textFieldSize);
         inputTextField.setBorder(createEmptyBorder(20, 20, 20, 20));
         inputTextField.setFont(new Font(Font.MONOSPACED, Font.BOLD, 20));
     }
@@ -112,27 +111,16 @@ class GuessPanel extends JPanel {
      * making the input text field visible.
      */
     private void resetGame() {
-
         gameLogic.reset();
 
         resetButton.setText("Reset");
-        attemptsLabel.setText(attemptsString());
+        updateAttemptLabel();
         instructionLabel.setText("Enter your guess");
         inputTextField.setVisible(true);
         inputTextField.setText("");
         submitButton.setVisible(true);
         inputTextField.requestFocus();
         instructionLabel.setForeground(Color.GRAY);
-    }
-
-    /**
-     * This method is called when the game is over, i.e. the player has run out of attempts or on game completed.
-     */
-    private void gameOver() {
-        attemptsLabel.setText("");
-        inputTextField.setVisible(false);
-        submitButton.setVisible(false);
-        resetButton.setText("PLay again");
     }
 
     /**
@@ -143,35 +131,34 @@ class GuessPanel extends JPanel {
     private void performGuess(ActionEvent e) {
         try {
             int number = parseInt(inputTextField.getText()); // throws exception for number formatting
-            if (gameLogic.isCorrect(number)) {
-                String inst = String.format("You won the game : %02d / 100", gameLogic.getScore());
-                instructionLabel.setText(inst);
-                instructionLabel.setForeground(Color.BLUE);
-                gameOver();
-            } else {
-                gameLogic.reduceScore();
-                if (gameLogic.isGameOver()) {
-                    instructionLabel.setText("Correct guess is " + gameLogic.getRandomNumber());
-                    gameOver();
-                } else {
-                    attemptsLabel.setText(attemptsString());
-                    instructionLabel.setText(gameLogic.getInstruction(number));
-                    instructionLabel.setForeground(Color.RED);
-                }
+            int diff = gameLogic.performGuess(number);
+            String iText; // instructionLabel text based on guess
+            Color iColor = Color.RED;
+
+            if (gameLogic.isGameOver())
+                iText = "Correct guess is " + gameLogic.getGeneratedNumber();
+            else if (diff == 0) {
+                iText = "You won the game";
+                iColor = Color.BLUE;
+            } else iText = String.format("you guess %d is %s", number, diff < 0 ? "low" : "high");
+
+            if (gameLogic.isGameOver() || diff == 0) {
+                inputTextField.setVisible(false);
+                submitButton.setVisible(false);
+                resetButton.setText("PLay again");
             }
+
             inputTextField.setText("");
             inputTextField.requestFocus();
+            instructionLabel.setText(iText);
+            instructionLabel.setForeground(iColor);
+            updateAttemptLabel();
         } catch (Exception exception) {
             exception.printStackTrace();
         }
     }
 
-    /**
-     * This is a method that returns a string representation of the number of attempts remains for the player in the game.
-     *
-     * @return remaining attempts string for the label.
-     */
-    private String attemptsString() {
-        return String.format("Attempts : %02d", gameLogic.getAttempts());
+    private void updateAttemptLabel() {
+        attemptsLabel.setText("Remaining attempts: " + gameLogic.getAttempts());
     }
 }

@@ -7,30 +7,19 @@ import javax.swing.*;
  * <p>
  * Allows the user to input guesses and displays the number of attempts and game status.
  */
-public class GuessNumberWindow extends JFrame {
-    private final GuessPanel guessPanel;
+public class GuessNumberWindow {
 
-    /**
-     * Constructs a GuessNumberWindow object with a title, a GuessPanel, and default size and location.
-     */
-    public GuessNumberWindow() {
-        setTitle("Guess the Number");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        guessPanel = new GuessPanel();
-
-        add(guessPanel);
-
-        setSize(400, 500);
-        setLocationRelativeTo(null);
-        setVisible(true);
-    }
-
-    /**
-     * Launches the GuessNumberWindow application.
-     * @param args an array of command-line arguments for the application.
-     */
     public static void main(String[] args) {
-        new GuessNumberWindow();
+        JFrame jFrame = new JFrame();
+        jFrame.setTitle("Guess the Number");
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        GuessPanel guessPanel = new GuessPanel();
+
+        jFrame.add(guessPanel);
+
+        jFrame.setSize(400, 500);
+        jFrame.setLocationRelativeTo(null);
+        jFrame.setVisible(true);
     }
 }

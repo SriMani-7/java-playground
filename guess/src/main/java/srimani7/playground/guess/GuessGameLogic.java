@@ -7,47 +7,46 @@ import java.util.Random;
  */
 public class GuessGameLogic {
     private final Random random;
-    private int score;
-
-    public int getRandomNumber() {
-        return randomNumber;
-    }
-
-    private int randomNumber;
+    private int attempts;
+    private int generatedNumber;
 
     GuessGameLogic() {
         random = new Random();
     }
 
-    public void reset() {
-        randomNumber = random.nextInt(100)+1;
-        score = 100;
-        System.out.println("Generated random number " + randomNumber);
+    public int getGeneratedNumber() {
+        return generatedNumber;
     }
 
-    public int getScore() {
-        return score;
+    public void reset() {
+        generatedNumber = random.nextInt(100) + 1;
+        attempts = 10;
+        System.out.println("Generated random number " + generatedNumber); // for debugging
     }
 
     public boolean isGameOver() {
-        return score <= 0;
+        return attempts == 0;
     }
 
+    /**
+     * This method returns remaining attempts
+     * */
     public int getAttempts() {
-        return score / 10;
+        return attempts;
     }
 
-    public void reduceScore() {
-        score -= 10;
-    }
-
-    public boolean isCorrect(int other) {
-        return randomNumber == other;
-    }
-
-    public String getInstruction(int other) {
-        if (other > randomNumber) return other+" is too high";
-        else if (other < randomNumber) return other+" is too small";
-        else return "";
+    /**
+     * Compares user's guess to generated number.
+     *
+     * - Calculates difference (positive: too high, negative: too low, zero: correct).
+     * - Decrements attempts on wrong guess.
+     *
+     * @param number User's guess.
+     * @return Difference between guess and generated number.
+     */
+    public int performGuess(int number) {
+        int diff = number - generatedNumber;
+        if (diff != 0) attempts -= 1;
+        return diff;
     }
 }
