@@ -12,5 +12,38 @@
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <siteMainDirectory>${user.home}</siteMainDirectory>
+    <scmPubCheckoutDirectory>
+      \${siteMainDirectory}/java-playground-site-content-scm</scmPubCheckoutDirectory>
   </properties>
+  <distributionManagement>
+    <site>
+      <id>github</id>
+      <url>scm:git:https://github.com/SriMani-7/java-playground.git</url>
+    </site>
+  </distributionManagement>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-publish-plugin</artifactId>
+        <version>3.3.0</version>
+        <configuration>
+          <checkoutDirectory>${scmPubCheckoutDirectory}</checkoutDirectory>
+          <tryUpdate>true</tryUpdate>
+          <scmBranch>gh-pages</scmBranch>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.20.0</version>
+      </plugin>
+    </plugins>
+  </reporting>
+
 </project>
